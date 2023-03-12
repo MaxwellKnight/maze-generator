@@ -1,1 +1,2 @@
 # maze-generator
+# maze-generator
