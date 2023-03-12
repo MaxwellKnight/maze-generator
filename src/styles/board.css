@@ -1,0 +1,45 @@
+.table {
+	transform: rotate(90deg);
+}
+
+.controls {
+	display: flex;
+	justify-content: center;
+	margin-block: 1rem;
+}
+
+button {
+	padding-block: .5rem;
+	padding-inline: 2rem;
+	margin-inline: .5rem;
+	font-size: 1.2rem;
+	color: whitesmoke;
+	font-weight: bold;
+	font-family: 'Courier New', Courier, monospace;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+	background-color: goldenrod;
+	scale: 1;
+	transition: scale 250ms ease;
+	border: none;
+}
+
+button:hover {
+	scale: 1.05;
+	transition: scale 250ms ease;
+}
+
+button:active {
+	scale: .97;
+	transition: scale 250ms ease-in;
+}
+
+
+@media (min-width: 50rem) {
+	.table {
+		border-collapse: collapse;
+		height: 30rem;
+		aspect-ratio: 2 / 1;
+		background-color: rebeccapurple;
+		transform: rotate(0);
+	}
+}
