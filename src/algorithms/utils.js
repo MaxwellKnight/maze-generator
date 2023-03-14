@@ -1,10 +1,9 @@
-const DIRECTIONS_CONST = {
-	UP: 0,
-	RIGHT: 1,
-	BOTTOM: 2,
-	LEFT: 3
-}
+const DIRECTIONS_CONST = { UP: 0, RIGHT: 1, BOTTOM: 2, LEFT: 3 }
 const { UP, RIGHT, BOTTOM, LEFT } = DIRECTIONS_CONST;
+
+const getCoordinateKey = (row, column) => `${row},${column}`;
+
+const validateRange = (x, y, rows, columns) => (0 <= x && x < rows) && (0 <= y && y < columns);
 
 const getDirection = direction => {
 	switch (direction) {
@@ -26,6 +25,4 @@ const mapDirection = direction => {
 	return 0;
 }
 
-const validateRange = (x, y, rows, columns) => (0 <= x && x < rows) && (0 <= y && y < columns)
-
-export { DIRECTIONS_CONST, getDirection, validateRange, mapDirection }
+export { DIRECTIONS_CONST, getDirection, validateRange, mapDirection, getCoordinateKey }

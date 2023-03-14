@@ -1,9 +1,11 @@
-import { DIRECTIONS_CONST, getDirection, validateRange, mapDirection } from './utils';
+import { DIRECTIONS_CONST, getDirection, validateRange, mapDirection, getCoordinateKey } from './utils';
 const { UP, RIGHT, BOTTOM, LEFT } = DIRECTIONS_CONST;
 
-const getCoordinateKey = (row, column) => `${row},${column}`;
-
-//get all walls "1" exists a wall "0" doesn't 
+/*
+get all walls; "1" means a wall exists, and "0" means it doesn't
+	0		  0		 0		    0
+	UP		RIGHT		DOWN		LEFT
+*/
 const getWalls = (currentWall, direction) =>
 	currentWall.substring(0, direction) + "1" + currentWall.substring(direction + 1);
 
@@ -37,9 +39,7 @@ const getMaze = (rows, columns) => {
 	const maze = Array(rows).fill().map(() => Array(columns).fill('0000'));
 	const stack = [], trail = [], visited = new Set();
 	//choose starting cell
-	const x = 0;
-	const y = 0;
-	const start = { x, y };
+	const start = { x: 0, y: 0 };
 	//push starting cell to the stack and add it to the visited set
 	stack.push(start);
 	visited.add(getCoordinateKey(start.x, start.y));
@@ -68,8 +68,6 @@ const getMaze = (rows, columns) => {
 			stack.push(nxtCell);
 		}
 	}
-
 	return [maze, trail];
 }
-
 export { getMaze }

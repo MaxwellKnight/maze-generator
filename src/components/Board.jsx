@@ -24,6 +24,7 @@ const Board = ({ rows, columns, delay }) => {
 
 	const animateMazeDFS = () => {
 		const [finalMaze, trail] = getMaze(rows, columns);
+		console.log(finalMaze);
 		for (let i = 0; i < trail.length; i += 1) {
 			setTimeout(() => {
 				const current = trail[i];

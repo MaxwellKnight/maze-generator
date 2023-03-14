@@ -1,4 +1,4 @@
-import { validateRange, DIRECTIONS_CONST, getDirection } from "./utils";
+import { validateRange, DIRECTIONS_CONST, getDirection, getCoordinateKey } from "./utils";
 const { UP, RIGHT, BOTTOM, LEFT } = DIRECTIONS_CONST;
 
 //validate neighbor is in range and unvisited
@@ -44,7 +44,7 @@ const bfs_shortest_path = ({ source, destination }, maze) => {
 	while (queue.length > 0) {
 		//get the first element in the queue
 		const current = queue.shift();
-		const currentKey = `${current.x},${current.y}`;
+		const currentKey = getCoordinateKey(current.x, current.y);
 		trail.push(current);
 
 		//if cell has been visited then skip iteration
