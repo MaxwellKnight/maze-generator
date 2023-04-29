@@ -8,6 +8,9 @@ This is a maze generator and solver web application built using JavaScript with 
 - Vite v2.6.4 or higher
 - React v17.0.2 or higher
 npm
+
+![Alt text](/maze.png?raw=true "Screenshot of the maze")
+
 ## Installation
 
 1. Clone the repository to your local machine
