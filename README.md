@@ -7,7 +7,7 @@ This is a maze generator and solver web application built using JavaScript with 
 - Node.js v14.17.6 or higher
 - Vite v2.6.4 or higher
 - React v17.0.2 or higher
-
+npm
 ## Installation
 
 1. Clone the repository to your local machine
