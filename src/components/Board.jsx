@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getMaze } from "../algorithms/dfs_maze";
 import { bfs_shortest_path } from "../algorithms/bfs_shortest_path";
 import Cell from './Cell';
@@ -14,6 +14,7 @@ const Board = ({ rows, columns, delay }) => {
 	const [destinationCell, setDestinationCell] = useState(null);
 	const [isCreatingMaze, setIsCreatingMaze] = useState(false);
 	const [isPath, setIsPath] = useState(true);
+	const [reset, setReset] = useState(false);
 
 	async function handleCreateMaze(e) {
 		setIsCreatingMaze(true);
@@ -24,7 +25,6 @@ const Board = ({ rows, columns, delay }) => {
 
 	const animateMazeDFS = () => {
 		const [finalMaze, trail] = getMaze(rows, columns);
-		console.log(finalMaze);
 		for (let i = 0; i < trail.length; i += 1) {
 			setTimeout(() => {
 				const current = trail[i];
@@ -43,10 +43,25 @@ const Board = ({ rows, columns, delay }) => {
 				const tempMaze = [...maze];
 				tempMaze[current.x][current.y] = maze[current.x][current.y] + "0";
 				setMaze(() => tempMaze);
-				if (i === shortest.length - 1) setDestinationCell(() => ({ x: current.x, y: current.y }))
+				if (i === shortest.length - 1) {
+					setDestinationCell(() => ({ x: current.x, y: current.y }));
+					setTimeout(() => setReset(true), delay * 500);
+				}
 			}, delay * i)
 		}
+
 	}
+
+	useEffect(() => {
+		if(reset){
+			setMaze(Array(rows).fill().map(() => Array(columns).fill("0000")));
+			setCurrentCell({x: 0, y: 0});
+			setIsCreatingMaze(false);
+			setDestinationCell(null);
+			setIsPath(true);
+			setReset(false);
+		}
+	}, [reset]);
 
 	return (
 		<>

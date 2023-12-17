@@ -38,7 +38,6 @@ const getNeighbors = (source, visited, rows, columns) => {
 const getMaze = (rows, columns) => {
 	const maze = Array(rows).fill().map(() => Array(columns).fill('0000'));
 	const stack = [], trail = [], visited = new Set();
-	stack = [1]
 	//choose starting cell
 	const start = { x: 0, y: 0 };
 	//push starting cell to the stack and add it to the visited set

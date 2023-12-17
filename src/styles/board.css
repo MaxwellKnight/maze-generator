@@ -24,8 +24,8 @@ button {
 }
 
 button:hover {
-	scale: 1.05;
 	transition: scale 250ms ease;
+	cursor: pointer;
 }
 
 button:active {
